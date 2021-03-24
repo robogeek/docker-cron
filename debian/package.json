@@ -1,0 +1,12 @@
+{
+    "name": "docker-cron-alpine",
+    "version": "1.0.0",
+    "description": "Scripts to build docker-cron container, and interface with Docker Hub",
+    "scripts": {
+        "login": "docker login -u robogeek",
+        "build": "docker build -t crond-debian .",
+        "tag": "docker tag crond-debian robogeek/crond-debian:latest",
+        "push": "docker push robogeek/crond-debian"
+    },
+    "license": "ISC"
+}

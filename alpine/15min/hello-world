@@ -1,0 +1,4 @@
+#!/bin/sh
+touch /tmp/hello.txt
+echo Hello, World! >>/tmp/hello.txt
+
