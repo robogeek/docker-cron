@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -x
+
+SRC=/docroot
+DEST=/backups
+
+DB_USER_NAME=dbuser
+DB_PASSWORD=dbpassw0rd
+DB_NAME=wpdb
+DB_SERVER=db
+
+mkdir -p ${DEST}
+
+TIMESTAMP=`date '+%Y-%m-%d-%H:%M'`
+
+mysqldump \
+        -u ${DB_USER_NAME} \
+        --password=${DB_PASSWORD} \
+        -h ${DB_SERVER} \
+        --databases ${DB_NAME} \
+        >${DEST}/${TIMESTAMP}-${DB_NAME}.sql
+gzip ${DEST}/${TIMESTAMP}-${DB_NAME}.sql
+
+cd $SRC
+tar cfz ${DEST}/${TIMESTAMP}-${DB_NAME}-filez.tar.gz .
+

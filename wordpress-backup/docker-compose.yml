@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+    crond:
+        image: crond-alpine-mysql
+        networks:
+            - wordpress-local_wpnet
+        volumes:
+            - ./hourly:/etc/periodic/hourly
+            # This must be the path to where the Wordpress files are located
+            - ../../wordpress-local/roots/html:/docroot
+            - ./backups:/backups
+
+networks:
+    wordpress-local_wpnet:
+        external: true
