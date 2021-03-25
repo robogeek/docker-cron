@@ -1,0 +1,12 @@
+{
+    "name": "docker-cron-alpine-mysql-4-docker-hub",
+    "version": "1.0.0",
+    "description": "Scripts to build docker-cron container, and interface with Docker Hub",
+    "scripts": {
+        "login": "docker login -u robogeek",
+        "build": "docker build -t crond-alpine-mysql-4-docker-hub .",
+        "tag": "docker tag crond-alpine-mysql-4-docker-hub robogeek/crond:latest",
+        "push": "docker push robogeek/crond"
+    },
+    "license": "ISC"
+}
